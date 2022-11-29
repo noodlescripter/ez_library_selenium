@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [test runner]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="com.qa.reporter.Reporter"/>
+  </listeners>
+  <test thread-count="5" name="runner(failed)" verbose="0">
+    <classes>
+      <class name="com.qa.e2e.admin.MainTest">
+        <methods>
+          <include name="validate_user_login_with_valid_credentials_3"/>
+          <include name="setUpEnv"/>
+          <include name="distoryEverything"/>
+        </methods>
+      </class> <!-- com.qa.e2e.admin.MainTest -->
+    </classes>
+  </test> <!-- runner(failed) -->
+</suite> <!-- Failed suite [test runner] -->

@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="test runner">
+	<listeners>
+		<listener class-name="com.qa.reporter.Reporter"></listener>
+	</listeners>
+	<test name="runner">
+
+		<classes>
+			<!-- <class name="com.qajaggar.base.admin.Main_2_Test"></class>
+			<class name="com.qajaggar.base.admin.MainTest"></class> -->
+			<class name="com.qa.e2e.admin.MainTest"></class>
+		</classes>
+
+	</test>
+
+</suite>
