@@ -63,11 +63,12 @@ public class BrowserConfig {
         try {
             if (browserName.equalsIgnoreCase("chrome")) {
                 WebDriverManager.chromedriver().setup();
+                ChromeOptions op = new ChromeOptions();
                 if (headless.equals("false")) {
-                    driver = new ChromeDriver();
+                    op.addArguments("--window-size=1920,1080");
+                    driver = new ChromeDriver(op);
                 }
                 if (headless.equals("true")) {
-                    ChromeOptions op = new ChromeOptions();
                     op.addArguments("--no-sandbox");
                     op.addArguments("--headless");
                     op.addArguments("disable-gpu");
@@ -78,11 +79,12 @@ public class BrowserConfig {
 
             if (browserName.equalsIgnoreCase("firefox")) {
                 WebDriverManager.firefoxdriver().setup();
+                FirefoxOptions op = new FirefoxOptions();
                 if (headless.equals("false")) {
-                    driver = new FirefoxDriver();
+                    op.addArguments("--window-size=1920,1080");
+                    driver = new FirefoxDriver(op);
                 }
                 if (headless.equals("true")) {
-                    FirefoxOptions op = new FirefoxOptions();
                     op.addArguments("--no-sandbox");
                     op.addArguments("--headless");
                     op.addArguments("disable-gpu");
@@ -100,13 +102,17 @@ public class BrowserConfig {
                     System.out.println("Headless Edge Driver Not Supported By this Framework yet!!!!!!!!!");
                     driver = new EdgeDriver();
                 }
+                driver.manage().window().maximize();
+                System.out.println("Will run in full Screen!!!!!");
             }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Something went wrong, giving it another chance :: Chrome ONLY");
             try {
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions op = new ChromeOptions();
+                op.addArguments("--window-size=1920,1080");
+                driver = new ChromeDriver(op);
             } catch (Exception EA) {
                 System.out.println("That did not work!!!!!!!!! Throwing big asss errrr!!!!!!!");
                 EA.getMessage();
@@ -115,10 +121,8 @@ public class BrowserConfig {
 
         // @param url should be provied thru xml or property file
         driver.get(url);
-
         // @checkpoint for page to be fully loaded
         Wait.waitForEle(driver, "//h1");
-
         // @return driver
         return driver;
     }

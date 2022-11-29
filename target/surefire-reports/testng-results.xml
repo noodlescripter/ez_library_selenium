@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-11-28T20:06:51 EST" name="test runner" finished-at="2022-11-28T20:07:03 EST" duration-ms="12272">
+  <suite started-at="2022-11-28T20:30:34 EST" name="test runner" finished-at="2022-11-28T20:30:48 EST" duration-ms="13841">
     <groups>
     </groups>
-    <test started-at="2022-11-28T20:06:51 EST" name="runner" finished-at="2022-11-28T20:07:03 EST" duration-ms="12272">
+    <test started-at="2022-11-28T20:30:34 EST" name="runner" finished-at="2022-11-28T20:30:48 EST" duration-ms="13841">
       <class name="com.qa.e2e.admin.MainTest">
-        <test-method is-config="true" signature="setUpEnv()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:06:51 EST" name="setUpEnv" finished-at="2022-11-28T20:06:53 EST" duration-ms="2465" status="PASS">
+        <test-method is-config="true" signature="setUpEnv()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:30:34 EST" name="setUpEnv" finished-at="2022-11-28T20:30:37 EST" duration-ms="2525" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpEnv -->
-        <test-method signature="validate_user_login_with_valid_credentials()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:06:53 EST" name="validate_user_login_with_valid_credentials" finished-at="2022-11-28T20:06:58 EST" duration-ms="4618" status="PASS">
+        <test-method signature="validate_user_login_with_valid_credentials()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:30:37 EST" name="validate_user_login_with_valid_credentials" finished-at="2022-11-28T20:30:42 EST" duration-ms="4617" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validate_user_login_with_valid_credentials -->
-        <test-method signature="validate_user_login_with_valid_credentials_2()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:06:58 EST" name="validate_user_login_with_valid_credentials_2" finished-at="2022-11-28T20:07:00 EST" duration-ms="2372" status="PASS">
+        <test-method signature="validate_user_login_with_valid_credentials_2()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:30:42 EST" name="validate_user_login_with_valid_credentials_2" finished-at="2022-11-28T20:30:44 EST" duration-ms="2961" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validate_user_login_with_valid_credentials_2 -->
-        <test-method signature="validate_user_login_with_valid_credentials_3()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:07:00 EST" name="validate_user_login_with_valid_credentials_3" finished-at="2022-11-28T20:07:02 EST" duration-ms="1762" status="FAIL">
+        <test-method signature="validate_user_login_with_valid_credentials_3()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:30:44 EST" name="validate_user_login_with_valid_credentials_3" finished-at="2022-11-28T20:30:47 EST" duration-ms="2646" status="FAIL">
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
               <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//nav/ul[@role='menu']/li/a/p[contains(text(), 'Catalog')]//ancestor::a//following-sibling::ul/li/a//p[contains(text(), 'dajksjdksajd')]"}
@@ -28,8 +28,8 @@ For documentation on this error, please visit: https://www.seleniumhq.org/except
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'Hamim', ip: '172.29.96.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.14'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.122, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\hamim\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:52053}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 8cf7349cb206609d438c91858df6cd2d
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.122, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\hamim\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61823}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: a0f95e06d6406bf85ca53543c564345d
 *** Element info: {Using=xpath, value=//nav/ul[@role='menu']/li/a/p[contains(text(), 'Catalog')]//ancestor::a//following-sibling::ul/li/a//p[contains(text(), 'dajksjdksajd')]}]]>
             </message>
             <full-stacktrace>
@@ -39,8 +39,8 @@ For documentation on this error, please visit: https://www.seleniumhq.org/except
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'Hamim', ip: '172.29.96.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.14'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.122, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\hamim\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:52053}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 8cf7349cb206609d438c91858df6cd2d
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.122, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\hamim\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61823}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: a0f95e06d6406bf85ca53543c564345d
 *** Element info: {Using=xpath, value=//nav/ul[@role='menu']/li/a/p[contains(text(), 'Catalog')]//ancestor::a//following-sibling::ul/li/a//p[contains(text(), 'dajksjdksajd')]}
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
@@ -97,7 +97,7 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:121)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validate_user_login_with_valid_credentials_3 -->
-        <test-method is-config="true" signature="distoryEverything()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:07:02 EST" name="distoryEverything" finished-at="2022-11-28T20:07:03 EST" duration-ms="625" status="PASS">
+        <test-method is-config="true" signature="distoryEverything()[pri:0, instance:com.qa.e2e.admin.MainTest@482bce4f]" started-at="2022-11-28T20:30:47 EST" name="distoryEverything" finished-at="2022-11-28T20:30:48 EST" duration-ms="633" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- distoryEverything -->
