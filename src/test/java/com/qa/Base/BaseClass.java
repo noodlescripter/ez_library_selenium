@@ -20,6 +20,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -27,85 +29,61 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.qa.config.BrowserConfig;
 import com.qa.lib.GetProp;
+import com.qa.lib.InvokeBatFile;
+import com.qa.lib.OSUTIL;
 
+import io.appium.java_client.android.AndroidDriver;
 
 public class BaseClass {
 
+	public static AndroidDriver mDriver;
 	public static WebDriver driver;
 	public ExtentHtmlReporter htmlReporter;
 	public ExtentReports extentReports;
 	public ExtentTest test;
 
-	/*
-	 * @BeforeSuite public void setUpReport() { String report_folder =
-	 * "Report/report_.html"; htmlReporter = new ExtentHtmlReporter(report_folder);
-	 * extentReports = new ExtentReports();
-	 * extentReports.attachReporter(htmlReporter);
-	 * htmlReporter.config().setTheme(Theme.DARK);
-	 * htmlReporter.setAppendExisting(true); }
-	 */
-
-	@BeforeClass
-	public void setUpEnv() throws IOException {
-		GetProp prop = new GetProp("config/env.properties");
-		driver = BrowserConfig.getBrowser_new(driver, prop.getValue("isHeadless"), prop.getValue("browserNAME"), prop.getValue("baseURL"));
+	public String GET_HOST() {
+		return OSUTIL.getOS();
 	}
 
-//	@BeforeMethod(alwaysRun = true)
-//	public void gettingTestCasesName(Method m) {
-//		
-//	}
+	@Parameters({
+			"isMobile"
+	})
+	@BeforeClass
+	public void setUpEnvWeb(boolean isMobile) throws IOException {
+		if (!isMobile) {
+			GetProp prop = new GetProp("config/env.properties");
+			driver = BrowserConfig.getBrowser_new(driver, prop.getValue("isHeadless"), prop.getValue("browserNAME"),
+					prop.getValue("baseURL"));
+		}
+		if (isMobile) {
+			//Just a simple flag since Appium does not like @BeforeClass!
+			System.out.println("NOTHING TO DO IN THE BEFORE CLASS!!");
+		}
+	}
+
+	@Parameters({
+			"isMobile"
+	})
+	@BeforeMethod
+	public void setEnv_Mobile(@Optional("false") boolean isMobile) {
+		if (!isMobile) {
+			System.out.println("");
+		}
+		if (isMobile) {
+			mDriver = BrowserConfig.getAppium_APK(mDriver, GET_HOST());
+		}
+	}
 
 	@AfterClass
 	public void distoryEverything() throws IOException {
+		if (driver == null) {
+			mDriver.closeApp();
+		}
 
-		/*
-		 * if (result.getStatus() == ITestResult.FAILURE) {
-		 * test.fail(result.getThrowable() + " ::: FAILED!!!");
-		 * test.addScreenCaptureFromPath(ScreenShot.takeScreenShot(driver,
-		 * "failedTCT")); }
-		 * 
-		 * if (result.getStatus() == ITestResult.SUCCESS) {
-		 * test.pass(result.getMethod().getMethodName() + " ::: PASSED :) "); }
-		 * 
-		 * if (result.getStatus() == ITestResult.SKIP) {
-		 * test.pass(result.getMethod().getMethodName() + " ::: SKIPPED :) "); }
-		 */
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
+
 	}
-
-//	@AfterMethod(alwaysRun = true)
-//	public void tear_down(ITestResult result) throws IOException {
-//
-//		if (result.getStatus() == ITestResult.FAILURE) {
-//			test.fail(result.getThrowable() + " ::: FAILED!!!");
-//			test.addScreenCaptureFromPath(ScreenShot.takeScreenShot(driver, "failedTCT"));
-//		}
-//
-//		if (result.getStatus() == ITestResult.SUCCESS) {
-//			test.pass(result.getMethod().getMethodName() + " ::: PASSED :) ");
-//		}
-//
-//		if (result.getStatus() == ITestResult.SKIP) {
-//			test.pass(result.getMethod().getMethodName() + " ::: SKIPPED :) ");
-//		}
-//
-//	}
-
-	/*
-	 * @AfterSuite public void tearDown() { extentReports.flush(); }
-	 */
-	
-	
-	
-	public String sss(String fileName) throws IOException {
-		File srcFile = (File) ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File des = new File("Screenshot/"+fileName+ ".png");
-		String abPath = des.getAbsolutePath();
-		
-		FileUtils.copyFile(srcFile, des);
-		return abPath;
-	}
-	
 }
-

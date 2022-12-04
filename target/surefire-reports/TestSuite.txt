@@ -1,17 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 14.955 sec <<< FAILURE! - in TestSuite
-validate_user_login_with_valid_credentials_3(com.qa.e2e.admin.MainTest)  Time elapsed: 2.97 sec  <<< FAILURE!
-org.openqa.selenium.NoSuchElementException: 
-no such element: Unable to locate element: {"method":"xpath","selector":"//nav/ul[@role='menu']/li/a/p[contains(text(), 'Catalog')]//ancestor::a//following-sibling::ul/li/a//p[contains(text(), 'dajksjdksajd')]"}
-  (Session info: chrome=107.0.5304.122)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'Hamim', ip: '172.29.96.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.14'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.122, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\hamim\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61823}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: a0f95e06d6406bf85ca53543c564345d
-*** Element info: {Using=xpath, value=//nav/ul[@role='menu']/li/a/p[contains(text(), 'Catalog')]//ancestor::a//following-sibling::ul/li/a//p[contains(text(), 'dajksjdksajd')]}
-	at com.qa.e2e.admin.MainTest.validate_user_login_with_valid_credentials_3(MainTest.java:46)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.976 sec - in TestSuite

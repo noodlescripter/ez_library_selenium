@@ -9,36 +9,10 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">test runner</th></tr>
-<tr><td><a href="#t0">runner</a></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">13,841</td><td></td><td></td></tr>
+<tr><td><a href="#t0">runner</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">7,872</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">test runner</th></tr></tbody><tbody id="t0"><tr><th colspan="4">runner &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.qa.e2e.admin.MainTest</td><td><a href="#m0">validate_user_login_with_valid_credentials_3</a></td><td rowspan="1">1669685444967</td><td rowspan="1">2646</td></tr><tr><th colspan="4">runner &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">com.qa.e2e.admin.MainTest</td><td><a href="#m1">validate_user_login_with_valid_credentials</a></td><td rowspan="1">1669685437384</td><td rowspan="1">4617</td></tr><tr class="passedeven"><td><a href="#m2">validate_user_login_with_valid_credentials_2</a></td><td rowspan="1">1669685442005</td><td rowspan="1">2961</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">test runner</th></tr></tbody><tbody id="t0"><tr><th colspan="4">runner &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.qa.e2e.mobile.MobileTest</td><td><a href="#m0">getAPK_UP</a></td><td rowspan="1">1670124198182</td><td rowspan="1">2544</td></tr></tbody>
 </table>
-<h2>runner</h2><h3 id="m0">com.qa.e2e.admin.MainTest#validate_user_login_with_valid_credentials_3</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//nav/ul[@role=&apos;menu&apos;]/li/a/p[contains(text(), &apos;Catalog&apos;)]//ancestor::a//following-sibling::ul/li/a//p[contains(text(), &apos;dajksjdksajd&apos;)]&quot;}
-  (Session info: chrome=107.0.5304.122)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;Hamim&apos;, ip: &apos;172.29.96.1&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.14&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 107.0.5304.122, chrome: {chromedriverVersion: 107.0.5304.62 (1eec40d3a576..., userDataDir: C:\Users\hamim\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61823}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: a0f95e06d6406bf85ca53543c564345d
-*** Element info: {Using=xpath, value=//nav/ul[@role=&apos;menu&apos;]/li/a/p[contains(text(), &apos;Catalog&apos;)]//ancestor::a//following-sibling::ul/li/a//p[contains(text(), &apos;dajksjdksajd&apos;)]}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at com.qa.lib.Wait.waitForEle(Wait.java:17)
-	at com.qa.lib.getElement.byXpath(getElement.java:11)
-	at com.qa.lib.AppNavigate.navigateTo(AppNavigate.java:19)
-	at com.qa.e2e.admin.MainTest.validate_user_login_with_valid_credentials_3(MainTest.java:46)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-... Removed 34 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.qa.e2e.admin.MainTest#validate_user_login_with_valid_credentials</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.qa.e2e.admin.MainTest#validate_user_login_with_valid_credentials_2</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>runner</h2><h3 id="m0">com.qa.e2e.mobile.MobileTest#getAPK_UP</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

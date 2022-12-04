@@ -4,7 +4,7 @@
 		<listener class-name="com.qa.reporter.Reporter"></listener>
 	</listeners>
 	<test name="runner">
-
+	<parameter name = "isMobile" value = "false"></parameter>
 		<classes>
 			<!-- <class name="com.qajaggar.base.admin.Main_2_Test"></class>
 			<class name="com.qajaggar.base.admin.MainTest"></class> -->

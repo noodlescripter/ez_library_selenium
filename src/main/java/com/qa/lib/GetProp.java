@@ -13,7 +13,7 @@ public class GetProp {
     public GetProp(String filePath){
         BufferedReader buff = null;
         try {
-           buff = new BufferedReader(new FileReader(GetCurrDir.currDir()+"/"+filePath));
+           buff = new BufferedReader(new FileReader(GetCurrDir.currDir()+filePath));
            prop = new Properties();
            prop.load(buff);
         } catch (Exception e) {

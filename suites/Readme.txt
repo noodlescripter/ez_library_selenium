@@ -1,3 +1,4 @@
+#NOTE : When using below commands please git bash!!!!
 #you can run this whole suite using below command
 
 ```

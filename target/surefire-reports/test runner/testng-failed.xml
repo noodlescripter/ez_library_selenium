@@ -5,14 +5,16 @@
     <listener class-name="com.qa.reporter.Reporter"/>
   </listeners>
   <test thread-count="5" name="runner(failed)" verbose="0">
+    <parameter name="isMobile" value="true"/>
     <classes>
-      <class name="com.qa.e2e.admin.MainTest">
+      <class name="com.qa.e2e.mobile.MobileTest">
         <methods>
-          <include name="validate_user_login_with_valid_credentials_3"/>
-          <include name="setUpEnv"/>
+          <include name="setEnv_Mobile"/>
+          <include name="setUpEnvWeb"/>
+          <include name="getAPK_UP"/>
           <include name="distoryEverything"/>
         </methods>
-      </class> <!-- com.qa.e2e.admin.MainTest -->
+      </class> <!-- com.qa.e2e.mobile.MobileTest -->
     </classes>
   </test> <!-- runner(failed) -->
 </suite> <!-- Failed suite [test runner] -->

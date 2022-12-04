@@ -1,59 +1,33 @@
 package com.qa.config;
-
-import java.io.IOException;
+import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeDriverService;
-import org.openqa.selenium.edge.EdgeOptions;
+
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
+import com.qa.lib.GetCurrDir;
+import com.qa.lib.GetProp;
 import com.qa.lib.Wait;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserConfig {
 
+    private static String DEVICE_NAME = "Device_1";
+    private static String UDID_NUMBER = "emulator-5554";
+    private static String PLATFORM_VERSION = "13";
+    private static String PLATFORM_NAME = "Android";
+    private static String SERVER_URL = "http://localhost:4723/wd/hub";
+    private static String APK = GetCurrDir.currDir() + "data/apk/MyBank_1.apk";
+
     private static String msg = "Something went wrong";
-
-    /* public static WebDriver getBrowser(WebDriver driver, String browserName) {
-        //@checkpoint
-
-        if (browserName == null || browserName == "") {
-            throw new Error("Something went wrong please check the param!!!!!");
-        }
-
-        //@config
-        try {
-            if (browserName.equalsIgnoreCase("chrome")) {
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
-            } else if (browserName.equalsIgnoreCase("firefox")) {
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-            } else if (browserName.equalsIgnoreCase("edge")) {
-                WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
-            } else {
-                throw new Error(msg);
-            }
-        } catch (Exception e) {
-            System.out.println("Something went wrong and trying to open default browser :: ++ Chrome");
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-        }
-
-        // navigating to the url
-        driver.get("https://admin-demo.nopcommerce.com/login");
-
-        // puting somevalidation
-        Wait.waitForEle(driver, "//h1");
-
-        // @return driver for future uses in the tc
-        return driver;
-    } */
 
     public static WebDriver getBrowser_new(WebDriver driver, String headless, String browserName, String url) {
         if (browserName == null || browserName == "" || url == null || url == "") {
@@ -125,6 +99,29 @@ public class BrowserConfig {
         Wait.waitForEle(driver, "//h1");
         // @return driver
         return driver;
+    }
+
+
+    public static AndroidDriver getAppium_APK(AndroidDriver mDriver, String osName) {
+        URL url = null;
+        DesiredCapabilities cap = null;
+        if (osName.toUpperCase().contains("WINDOWS") || osName.toUpperCase().contains("MAC") || osName.toUpperCase().contains("LINUX")) {
+            try {
+                System.out.println("HOST IS " + osName);
+                cap = new DesiredCapabilities();
+                cap.setCapability("deviceName", DEVICE_NAME);
+                cap.setCapability("udid", UDID_NUMBER);
+                cap.setCapability("platformName", PLATFORM_NAME);
+                cap.setCapability("platformVersion", PLATFORM_VERSION);
+                cap.setCapability("app", APK);
+                url = new URL(SERVER_URL);
+                mDriver = new AndroidDriver<MobileElement>(url, cap);
+                System.out.println("APPLICATION JUST STARTED!!!");
+            } catch (Exception e) {
+                System.out.println("FAILED TO START THE APPLICATION!!!!");
+            }
+        }
+        return mDriver;
     }
 
 }
