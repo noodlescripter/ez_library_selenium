@@ -29,13 +29,13 @@ public class DB {
 	
 	//@use this function to execute query
 	public static String query(String q) throws ClassNotFoundException, SQLException {
-		String dbUrl = "jdbc:mysql://10.147.18.21/node_mysql_crud_db";
+		String dbUrl = "";
 
 		// Database Username
-		String username = "build4api";
+		String username = "";
 
 		// Database Password
-		String password = "build4api";
+		String password = "";
 
 		// Query to Execute
 		String rr = null;

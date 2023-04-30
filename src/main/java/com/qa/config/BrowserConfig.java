@@ -1,5 +1,8 @@
 package com.qa.config;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,6 +20,7 @@ import com.qa.lib.Wait;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BrowserConfig {
 
@@ -27,6 +31,7 @@ public class BrowserConfig {
     private static String SERVER_URL = "http://localhost:4723/wd/hub";
     private static String APK = GetCurrDir.currDir() + "data/apk/MyBank_1.apk";
 
+    private static final String DOCKER_URL = "http://localhost:4444/wd/hub";
     private static String msg = "Something went wrong";
 
     public static WebDriver getBrowser_new(WebDriver driver, String headless, String browserName, String url) {
@@ -39,7 +44,7 @@ public class BrowserConfig {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions op = new ChromeOptions();
                 if (headless.equals("false")) {
-                    op.addArguments("--window-size=1920,1080");
+                    op.addArguments("--window-size=400,800");
                     driver = new ChromeDriver(op);
                 }
                 if (headless.equals("true")) {
@@ -96,7 +101,6 @@ public class BrowserConfig {
         // @param url should be provied thru xml or property file
         driver.get(url);
         // @checkpoint for page to be fully loaded
-        Wait.waitForEle(driver, "//h1");
         // @return driver
         return driver;
     }
@@ -123,5 +127,19 @@ public class BrowserConfig {
         }
         return mDriver;
     }
+
+    //get dockerHUB, selenium chrome image running in docker
+    public static void startBrowserInDockerHUB(WebDriver driver) {
+        DesiredCapabilities cap = null;
+        ChromeOptions CHROME_OPTIONS = null;
+        try {
+            CHROME_OPTIONS = new ChromeOptions().addArguments("--window-size=500,650");
+            cap = DesiredCapabilities.chrome();
+            driver = new RemoteWebDriver(new URL(DOCKER_URL), cap);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

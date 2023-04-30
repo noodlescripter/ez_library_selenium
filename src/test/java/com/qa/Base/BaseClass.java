@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import com.qa.lib.LIB;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -42,6 +43,8 @@ public class BaseClass {
 	public ExtentReports extentReports;
 	public ExtentTest test;
 
+	public LIB lib = null;
+
 	public String GET_HOST() {
 		return OSUTIL.getOS();
 	}
@@ -55,6 +58,7 @@ public class BaseClass {
 			GetProp prop = new GetProp("config/env.properties");
 			driver = BrowserConfig.getBrowser_new(driver, prop.getValue("isHeadless"), prop.getValue("browserNAME"),
 					prop.getValue("baseURL"));
+			lib = new LIB(driver);
 		}
 		if (isMobile) {
 			//Just a simple flag since Appium does not like @BeforeClass!
