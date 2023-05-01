@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                dir('C:\ProgramData\Jenkins\.jenkins\workspace\env-ready-listolet') {
+                    bat 'mvn clean test -DsuiteXmlFile=suites/runner.xml'
+                }
+            }
+        }
+        stage('Email Report') {
+            steps {
+                emailext (
+                    subject: "Maven Build Report",
+                    body: "Please see attached report",
+                    attachmentsPattern: "**/Report/report_.html",
+                    to: "hamim.alam.personal@gmail.com"
+                )
+            }
+        }
+    }
+}
