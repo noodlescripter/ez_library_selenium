@@ -1,0 +1,8 @@
+version: '3'
+services:
+  frontend:
+    image: fake-api:latest
+    container_name: fake-api-container
+    ports:
+      - '8001:8001'
+    network_mode: bridge

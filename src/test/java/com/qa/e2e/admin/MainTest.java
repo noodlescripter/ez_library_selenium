@@ -16,11 +16,11 @@ public class MainTest extends BaseClass {
                 "Home",
                 "Listings"
         };
-        for (int i = 0; i < 2; i++) {
-            Assert.assertEquals(lib.CLICK_BY_CSS("[aria-controls='offcanvasLeft']"), "Pass");
-            Assert.assertEquals(lib.CLICK_LAST_ELEMENT_BY_TEXT(arrgs[i]), "Pass");
+        for (int i = 0; i < arrgs.length; i++) {
+            Assert.assertEquals(lib.main.CLICK_BY_CSS("[aria-controls='offcanvasLeft']"), "Pass");
+            Assert.assertEquals(lib.main.CLICK_LAST_ELEMENT_BY_TEXT(arrgs[i]), "Pass");
             if (arrgs[i].equals("Listings")) {
-                Assert.assertEquals(lib.GET_TEXT_BY_CSS("button[class='filter_btn']"), "Advance filter");
+                Assert.assertEquals(lib.main.GET_TEXT_BY_CSS("button[class='filter_btn']"), "Advance filter");
             }
         }
 

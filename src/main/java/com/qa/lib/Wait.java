@@ -11,8 +11,17 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
 public class Wait {
+    
+    private WebDriver driver = null;
+
+    public Wait(WebDriver driver) {
+        this.driver = driver;
+    }
 
     //Clearing the element
+    /*
+    * Note: this function is not being used in the latest version of this framework, if needed please create a constructor
+    * */
     public static WebElement waitForEle(WebDriver driver, String element) {
         int dTime = 10000;
         WebElement sElement = null;
@@ -35,6 +44,16 @@ public class Wait {
         WebDriverWait wait = new WebDriverWait(mDriver, dTime);
         MobileElement sElement = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(element)));
         return sElement;
+    }
+
+
+    public void hardWait(int timeout) {
+        try {
+            Thread.sleep(timeout);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cool API</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+  
+      h1 {
+        text-align: center;
+      }
+  
+      h2 {
+        margin-top: 20px;
+      }
+  
+      button {
+        padding: 8px 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+  
+      input {
+        padding: 8px;
+        margin-bottom: 8px;
+      }
+  
+      pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        max-width: 600px;
+        overflow: auto;
+      }
+      .restore-button {
+      background-color: #f44336;
+      }
+      #messageContainer {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Happy Automation :)</h1>
+  
+    <h2>Get All Users</h2>
+    <button onclick="getAllUsers()">Get All Users</button>
+    <pre id="usersResult"></pre>
+  
+    <h2>Get User by ID</h2>
+    <input type="text" id="userIdInput" placeholder="User ID">
+    <button onclick="getUserById()">Get User by ID</button>
+    <pre id="userResult"></pre>
+  
+    <h2>Add New User</h2>
+    <input type="text" id="firstNameInput" placeholder="First Name">
+    <input type="text" id="lastNameInput" placeholder="Last Name">
+    <input type="email" id="emailInput" placeholder="Email">
+    <input type="text" id="phoneInput" placeholder="Phone">
+    <input type="date" id="dobInput" placeholder="Date of Birth">
+    <input type="text" id="roleInput" placeholder="Role">
+    <button onclick="addUser()">Add User</button>
+  
+    <h2>Delete User by ID</h2>
+    <input type="text" id="deleteUserIdInput" placeholder="User ID">
+    <button onclick="deleteUser()">Delete User</button>
+
+    <h2>Restore Database</h2>
+    <button class="restore-button" onclick="restoreDatabase()">Restore Database</button>
+    <div id="messageContainer"></div>
+
+  <script>
+    function getAllUsers() {
+      fetch('/users')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('usersResult').textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(error => console.error(error));
+    }
+
+    function getUserById() {
+      const userId = document.getElementById('userIdInput').value;
+      if (!userId) return;
+      
+      fetch(`/users/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('userResult').textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(error => console.error(error));
+    }
+
+    function addUser() {
+      const firstName = document.getElementById('firstNameInput').value;
+      const lastName = document.getElementById('lastNameInput').value;
+      const email = document.getElementById('emailInput').value;
+      const phone = document.getElementById('phoneInput').value;
+      const dob = document.getElementById('dobInput').value;
+      const role = document.getElementById('roleInput').value;
+      
+      const newUser = {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        phone: phone,
+        dob: dob,
+        role: role
+      };
+
+      fetch('/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Perform any additional actions or updates as needed
+      })
+      .catch(error => console.error(error));
+    }
+
+    function deleteUser() {
+      const userId = document.getElementById('deleteUserIdInput').value;
+      if (!userId) return;
+
+      fetch(`/users/${userId}`, {
+        method: 'DELETE'
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Perform any additional actions or updates as needed
+      })
+      .catch(error => console.error(error));
+    }
+
+    function restoreDatabase() {
+      fetch('/restore-database', {
+        method: 'POST',
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        showMessage('Database restored successfully');
+      })
+      .catch(error => {
+        console.error(error);
+        showMessage('An error occurred while restoring the database');
+      });
+    }
+
+    function showMessage(message) {
+      const messageContainer = document.getElementById('messageContainer');
+      messageContainer.textContent = message;
+    }
+  </script>
+</body>
+</html>

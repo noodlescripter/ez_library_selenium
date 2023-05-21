@@ -178,7 +178,7 @@ public class LIB {
         boolean bRes = Wrapper.IS_ELEMENT_CLICKABLE(driver, sEle);
         if (bRes) {
             driver.findElement(sEle).click();
-            sConsole = "Pass: Clicked on :" + ele;
+            sConsole = "Pass";
         } else {
             sConsole = "Fail";
         }
@@ -343,6 +343,28 @@ public class LIB {
         if (driver.findElement(sBy).isSelected())
             sConsole = true;
         System.out.println("Element is " + sConsole);
+        return sConsole;
+    }
+
+    public String GET_TEXT_BY_TAG_NAME(String ele){
+        By sEle = By.tagName(ele);
+        boolean bRes = Wrapper.WAIT_UNTIL_ELEMENT_IS_PRESENT(driver, sEle);
+        if(bRes){
+            sConsole = driver.findElement(sEle).getText();
+        } else {
+            sConsole = "Fail: Not able to find the element :(";
+        }
+        System.out.println(sConsole);
+        return sConsole;
+    }
+
+    public boolean IS_ELEMENT_PRESENT_XPATH(String eles) {
+        boolean sConsole = false;
+        By sEle = By.xpath(eles);
+        boolean bRes = Wrapper.WAIT_UNTIL_ELEMENT_IS_PRESENT(driver, sEle);
+        if (bRes) {
+            sConsole = true;
+        }
         return sConsole;
     }
 }

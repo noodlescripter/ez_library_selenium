@@ -2,8 +2,11 @@ package com.qa.lib;
 
 
 
+import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import java.util.Set;
 
 public class Window {
 
@@ -27,25 +30,45 @@ public class Window {
 	 * 
 	 * }
 	 */
+	private WebDriver driver = null;
+	public Window(WebDriver driver) {
+		this.driver = driver;
+	}
 
 	//@window handle
-	public static void switchTo(WebDriver driver) {
-		System.out.println("Switching to window reeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-		String mainWindow = driver.getWindowHandle();
-		for (String windowHandle : driver.getWindowHandles()) {
-			if (!mainWindow.contentEquals(windowHandle)) {
-				try {
-					driver.switchTo().window(windowHandle);
-					break;
-				} catch (Exception e) {
-					System.out.println(e + "Window switching lag gayeeeeeeeeeeeeeeeeeee reeeeeeeeeeeeeee");
+	public void switchTo()  {
+		String mainWindowHandle = driver.getWindowHandle();
+
+		// Get all window handles
+		Set<String> windowHandles = driver.getWindowHandles();
+
+
+		try {
+			// Switch to the new window if available
+			for (String handle : windowHandles) {
+				if (!handle.equals(mainWindowHandle)) {
+					driver.switchTo().window(handle);
+					return;
 				}
 			}
+			Thread.sleep(3000);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
 	}
-	
-	public static void switchToFrame(WebDriver driver, String frameName) {
+
+	public  void closeDialog() {
+		if (driver.getWindowHandles().size() > 1) {
+			driver.close();
+		}
+		new Wait(driver).hardWait(2000);
+	}
+
+	public  void switchBack(String mainWindow)  {
+		driver.switchTo().window(mainWindow);
+		new Wait(driver).hardWait(2000);
+	}
+	public  void switchToFrame(String frameName) {
 		if(frameName == "" || frameName == null) {
 			throw  new Error("Something went wrong could!!!! Please prodive valid frame name");
 		}
@@ -61,6 +84,13 @@ public class Window {
 			System.out.println("No frame found!!!!!!");
 		}
 	}
-	
+
+	public void acceptAlert(boolean flag) {
+		new Wait(driver).hardWait(2000);
+		if(flag)
+			driver.switchTo().alert().accept();
+		else
+			driver.switchTo().alert().dismiss();
+	}
 }
 

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automation LAND</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .header {
+      background-color: #333;
+      padding: 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      border-radius: 5px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .card-content {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .edit-button {
+      padding: 8px 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    .logout-button {
+      padding: 8px 16px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+      border-radius: 6px;
+    }
+
+    .home-button {
+      padding: 8px 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <button class="home-button">Home</button>
+    <h1>Hello, <span id="username"></span>! Heya!!!! Happy Automation</h1>
+    <button class="logout-button">Logout</button>
+  </div>
+
+  <div class="content">
+    <div class="card">
+      <h2 class="card-title">User Information</h2>
+      <p class="card-content" id="userEmail"></p>
+      <p class="card-content" id="userPhone"></p>
+      <p class="card-content" id="userDOB"></p>
+      <p class="card-content" id="userRole"></p>
+      <button class="edit-button">Edit</button>
+    </div>
+  </div>
+
+  <script>
+    // Get the username from sessionStorage
+    const username = localStorage.getItem('username');
+
+    // Set the username in the HTML
+    const usernameElement = document.getElementById('username');
+    if (usernameElement) {
+      usernameElement.textContent = username ? username : 'Guest';
+    }
+
+    fetch(`/user/${username}`)
+      .then(response => response.json())
+      .then(data => {
+        const userEmail = document.getElementById('userEmail');
+        const userPhone = document.getElementById('userPhone');
+        const userDOB = document.getElementById('userDOB');
+        const userRole = document.getElementById('userRole');
+
+        userEmail.textContent = 'Email: ' + data.email;
+        userPhone.textContent = 'Phone: ' + data.phone;
+        userDOB.textContent = 'Date of Birth: ' + data.dob;
+        userRole.textContent = 'Role: ' + data.role;
+      })
+      .catch(error => console.error(error));
+
+    const logoutButton = document.querySelector('.logout-button');
+    logoutButton.addEventListener('click', () => {
+      // Clear the username from localStorage
+      localStorage.removeItem('username');
+      // Redirect to the login page
+      window.location.href = '/logout';
+    });
+
+    const homeButton = document.querySelector('.home-button');
+    homeButton.addEventListener('click', () => {
+      // Redirect to the home page
+      window.location.href = '/home';
+    });
+
+    const editButton = document.querySelector('.edit-button');
+    editButton.addEventListener('click', () => {
+      window.location.href = '/edituser';
+    });
+  </script>
+</body>
+
+</html>

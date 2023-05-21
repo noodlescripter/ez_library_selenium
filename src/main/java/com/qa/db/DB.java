@@ -8,9 +8,9 @@ import  java.sql.SQLException;
 
 public class DB {
 	
-	private static String url = "jdbc:mysql://10.147.18.21/node_mysql_crud_db";
-	private static String userName = "build4api";
-	private static String pass = "build4api";
+	private  String db_url = "jdbc:mysql://localhost:3306/qa_db";
+	private  String username = "root";
+	private  String pwd = "admin_123";
 	
 	
 	/*
@@ -28,15 +28,8 @@ public class DB {
 	
 	
 	//@use this function to execute query
-	public static String query(String q) throws ClassNotFoundException, SQLException {
-		String dbUrl = "";
-
-		// Database Username
-		String username = "";
-
-		// Database Password
-		String password = "";
-
+	public String query(String q) throws ClassNotFoundException, SQLException {
+	
 		// Query to Execute
 		String rr = null;
 
@@ -44,7 +37,7 @@ public class DB {
 		Class.forName("com.mysql.jdbc.Driver");
 
 		// Create Connection to DB
-		Connection con = DriverManager.getConnection(dbUrl, username, password);
+		Connection con = DriverManager.getConnection(db_url, username, pwd);
 
 		// Create Statement Object
 		Statement stmt = con.createStatement();
@@ -54,10 +47,6 @@ public class DB {
 		while(set.next()) {
 			rr = set.getString(1);
 		}
-		
 		return rr;
-		
 	}
-
 }
-

@@ -1,0 +1,8 @@
+.DS_Store
+.idea/
+.vscode/
+/live-app/fake-api-with-db/node_modules
+.classpath/
+.project/
+.settings/
+target/

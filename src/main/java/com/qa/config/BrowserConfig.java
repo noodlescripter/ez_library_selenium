@@ -34,8 +34,8 @@ public class BrowserConfig {
     private static final String DOCKER_URL = "http://localhost:4444/wd/hub";
     private static String msg = "Something went wrong";
 
-    public static WebDriver getBrowser_new(WebDriver driver, String headless, String browserName, String url) {
-        if (browserName == null || browserName == "" || url == null || url == "") {
+    public static WebDriver getBrowser_new(WebDriver driver, String headless, String browserName) {
+        if (browserName == null || browserName == "") {
             throw new Error("Something went wrong please check the param!!!!!");
         }
 
@@ -44,7 +44,7 @@ public class BrowserConfig {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions op = new ChromeOptions();
                 if (headless.equals("false")) {
-                    op.addArguments("--window-size=400,800");
+                    op.addArguments("--window-size=1920,1080");
                     driver = new ChromeDriver(op);
                 }
                 if (headless.equals("true")) {
@@ -98,8 +98,7 @@ public class BrowserConfig {
             }
         }
 
-        // @param url should be provied thru xml or property file
-        driver.get(url);
+
         // @checkpoint for page to be fully loaded
         // @return driver
         return driver;

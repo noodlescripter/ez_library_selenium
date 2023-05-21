@@ -55,4 +55,9 @@ public class FileUtility {
 			System.out.println("File does not exist!!!!!!!");
 		}
 	}
+
+	public boolean isFileExist(String filePath) {
+		File file = new File(GetCurrDir.currDir()+filePath);
+		return file.exists() && file.isFile();
+	}
 }

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+    #messageContainer {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      max-width: 400px;
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      width: 50%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #signupButton {
+      background-color: #3498db;
+    }
+
+    #signupButton:hover {
+      background-color: #2980b9;
+    }
+
+    .restoreButton {
+      background-color: #e74c3c;
+    }
+
+    .message {
+      text-align: center;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1>Login To Application</h1>
+
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Log In</button>
+      </form>
+
+      <br>
+
+      <button id="signupButton" onclick="openSignupWindow()">Sign Up</button>
+
+      <div id="messageContainer" class="message"></div>
+      <br>
+      <br>
+      <button id="restoreButton" class="restoreButton" onclick="restoreDatabase()">Restore Database</button>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const messageContainer = document.getElementById('messageContainer');
+
+    loginForm.addEventListener('submit', handleLogin);
+
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const credentials = {
+        username: username,
+        password: password
+      };
+
+      fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Login failed');
+          }
+        })
+        .then(data => {
+          // Login successful
+          console.log(data);
+          messageContainer.textContent = 'Login successful. Redirecting to home page...';
+          localStorage.setItem('username', username);
+          window.location.href = '/home'; // Redirect to the home page
+        })
+        .catch(error => {
+          // Login failed
+          console.error(error);
+          messageContainer.textContent = 'Invalid username or password';
+        });
+    }
+
+    function openSignupWindow() {
+      // Open the signup window
+      window.open('/signup', '_blank', 'width=500,height=600');
+    }
+
+    function restoreDatabase() {
+      fetch('/restore-database', {
+        method: 'POST',
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          showMessage('Database restored successfully');
+        })
+        .catch(error => {
+          console.error(error);
+          showMessage('An error occurred while restoring the database');
+        });
+    }
+
+    function showMessage(message) {
+      const messageContainer = document.getElementById('messageContainer');
+      messageContainer.textContent = message;
+    }
+  </script>
+</body>
+
+</html>
