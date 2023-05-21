@@ -62,7 +62,7 @@ Now we will need to start our back-end and UI, to do that navigate to the <live-
 ```bash
 npm start
 ```
-** It will install all the pkgs if required, then seed the database and UI will lunch including backend
+** It will install all the pkgs if required, then seed the database and UI will launch including back-end.
 
 After running above command you should be able to access the application at https://localhost:8001
 
@@ -72,12 +72,12 @@ Default username and pwd is: johndoe/password
 
 If above steps are too complicated, then follow below steps.
 1. cd into <src/test/java/com/qa/server>
-2. Right click and Main Function from Start_Server.java
+2. Right click and run Main function from Start_Server.java
 
 It will automate the whole process
 
 ## API
-You can api call using below endpoints
+You can make api call using below endpoints
 
 baseURI = localhost:8001
 1. /users
@@ -88,7 +88,7 @@ baseURI = localhost:8001
 Note: GET, DELETE, POST, PUT are supported.
 
 ## Execution of existing test cases
-I have created simple test cases for this project to make sure that, it is working as expected. You can run the default test cases by Navigating to <suites/e2e> and running <e2e_runner>.xml file or You can run below command
+I have created test cases for this project to make sure that, it is working as expected. You can run the default test cases by Navigating to <suites/e2e> and running <e2e_runner.xml> file or You can run below command
 ```bash
 mvn clean test -DsuiteXmlFile=suites/e2e/e2e_runner.xml
 ```
@@ -100,7 +100,7 @@ You can add more util functions as needed. Also if you want to automate any othe
 ## Application Summary
 This application was created to give you good understanding in UI and Back-end. All are integrated in one single application.
 Not only Automation, but it is recommended to be familiar with the application, know the flow e.g.
-Create users, make api calls, check in DB etc.
+Create users, make api calls, verify in DB etc.
 
 ## Contributing
 Feel free to add your ideas and library, if you think something needs to be changed, do so by creating a branch and pull request...
