@@ -109,9 +109,7 @@ Feel free to add your ideas and library, if you think something needs to be chan
 
 ** Please make sure to update tests as appropriate in <com/qa/e2e/integration>..
 
-## License
-
-MIT License
+## [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Copyright (c) [2023] [Hamim Alam]
 
