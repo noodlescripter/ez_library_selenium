@@ -24,7 +24,7 @@ brew install git
 ```
 Checkout the project by running below command
 ```bash
-git clone https://github.com/alamhamim/qa_library_selenium.git
+git clone https://github.com/alamhamim/ez_library_selenium.git
 ```
 
 Now, once you checked out this project, you will need to switch to develop branch by running below command
