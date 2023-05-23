@@ -1,5 +1,7 @@
 package com.qa.e2e.admin;
 
+import com.qa.lib.Wrapper;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.qa.Base.BaseClass;
@@ -9,41 +11,19 @@ import com.qa.lib.AppNavigate;
 public class MainTest extends BaseClass {
 
     @Test
-    public void validate_user_login_with_valid_credentials() throws InterruptedException {
+    public void validate_homepage_and_validate_listing_page() throws InterruptedException {
+        String[] arrgs = {
+                "Home",
+                "Listings"
+        };
+        for (int i = 0; i < arrgs.length; i++) {
+            Assert.assertEquals(lib.main.CLICK_BY_CSS("[aria-controls='offcanvasLeft']"), "Pass");
+            Assert.assertEquals(lib.main.CLICK_LAST_ELEMENT_BY_TEXT(arrgs[i]), "Pass");
+            if (arrgs[i].equals("Listings")) {
+                Assert.assertEquals(lib.main.GET_TEXT_BY_CSS("button[class='filter_btn']"), "Advance filter");
+            }
+        }
 
-        AppLogin.loginInAdmin(driver, "admin@yourstore.com", "admin");
-        // getElement.byXpath(driver, "//nav/ul[@role='menu']/li/a/p[contains(text(),
-        // 'Catalog')]").click();
-        // getElement.byXpath(driver, "//nav/ul[@role='menu']/li/a/p[contains(text(),
-        // 'Catalog')]//ancestor::a//following-sibling::ul/li/a//p[contains(text(),
-        // 'Products')]").click();
-        AppNavigate.navigateTo(driver, "Catalog", "Products");
-        AppLogin.logout(driver);
     }
 
-    @Test
-    public void validate_user_login_with_valid_credentials_2() throws InterruptedException {
-
-        AppLogin.loginInAdmin(driver, "admin@yourstore.com", "admin");
-        // getElement.byXpath(driver, "//nav/ul[@role='menu']/li/a/p[contains(text(),
-        // 'Catalog')]").click();
-        // getElement.byXpath(driver, "//nav/ul[@role='menu']/li/a/p[contains(text(),
-        // 'Catalog')]//ancestor::a//following-sibling::ul/li/a//p[contains(text(),
-        // 'Products')]").click();
-        // AppNavigate.navigateTo(driver, "Catalog", "dajksjdksajd");
-        AppLogin.logout(driver);
-    }
-
-    @Test
-    public void validate_user_login_with_valid_credentials_3() throws InterruptedException {
-
-        AppLogin.loginInAdmin(driver, "admin@yourstore.com", "admin");
-        // getElement.byXpath(driver, "//nav/ul[@role='menu']/li/a/p[contains(text(),
-        // 'Catalog')]").click();
-        // getElement.byXpath(driver, "//nav/ul[@role='menu']/li/a/p[contains(text(),
-        // 'Catalog')]//ancestor::a//following-sibling::ul/li/a//p[contains(text(),
-        // 'Products')]").click();
-        AppNavigate.navigateTo(driver, "Catalog", "dajksjdksajd");
-        AppLogin.logout(driver);
-    }
 }

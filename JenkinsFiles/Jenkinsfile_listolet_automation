@@ -1,0 +1,29 @@
+pipeline {
+    agent {
+        label {
+                    label ""
+                    customWorkspace "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\env-ready-listolet"
+                }
+    }
+
+    stages {
+
+        stage('Build and Test') {
+            steps {
+                // Change to the project directory and run tests using Maven
+                bat 'mvn clean test -DsuiteXmlFile=suites/runner.xml'
+            }
+        }
+        stage('Email Report') {
+            steps {
+                // Send an email with the test report
+                emailext (
+                    subject: "Listolet Test Report",
+                    body: "Please see attached report",
+                    attachmentsPattern: "**/Report/report_.html",
+                    to: "hamim.alam.personal@gmail.com"
+                )
+            }
+        }
+    }
+}

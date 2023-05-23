@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import com.qa.lib.LIB;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -42,6 +43,8 @@ public class BaseClass {
 	public ExtentReports extentReports;
 	public ExtentTest test;
 
+	public GetLibrary lib = null;
+
 	public String GET_HOST() {
 		return OSUTIL.getOS();
 	}
@@ -53,8 +56,8 @@ public class BaseClass {
 	public void setUpEnvWeb(boolean isMobile) throws IOException {
 		if (!isMobile) {
 			GetProp prop = new GetProp("config/env.properties");
-			driver = BrowserConfig.getBrowser_new(driver, prop.getValue("isHeadless"), prop.getValue("browserNAME"),
-					prop.getValue("baseURL"));
+			driver = BrowserConfig.getBrowser_new(driver, prop.getValue("isHeadless"), prop.getValue("browserNAME"));
+			lib = new GetLibrary(driver);
 		}
 		if (isMobile) {
 			//Just a simple flag since Appium does not like @BeforeClass!
@@ -67,6 +70,7 @@ public class BaseClass {
 	})
 	@BeforeMethod
 	public void setEnv_Mobile(@Optional("false") boolean isMobile) {
+		driver.get(new GetProp("config/env.properties").getValue("baseURL"));
 		if (!isMobile) {
 			System.out.println("");
 		}
@@ -82,6 +86,7 @@ public class BaseClass {
 		}
 
 		if (driver != null) {
+			driver.get("http://localhost:8001/restore-database");
 			driver.quit();
 		}
 

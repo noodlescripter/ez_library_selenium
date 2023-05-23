@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .form-container {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Sign Up Page</h1>
+
+  <div class="form-container">
+    <form id="signupForm">
+      <input type="text" id="firstName" placeholder="First Name" required>
+      <input type="text" id="lastName" placeholder="Last Name" required>
+      <input type="text" id="phoneNumber" placeholder="Phone Number" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="date" id="dob" placeholder="Date of Birth" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="text" id="username" placeholder="Username" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+
+  <script>
+    const signupForm = document.getElementById('signupForm');
+    signupForm.addEventListener('submit', handleSignup);
+
+    function handleSignup(event) {
+      event.preventDefault();
+
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const email = document.getElementById('email').value;
+      const dob = document.getElementById('dob').value;
+      const password = document.getElementById('password').value;
+      const username = document.getElementById('username').value;
+
+      const newUser = {
+        first_name: firstName,
+        last_name: lastName,
+        phone: phoneNumber,
+        email: email,
+        dob: dob,
+        role: 'user',
+        username: username,
+        password: password
+      };
+
+      fetch('/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          // Example: Display a success message
+          alert('Signup successful');
+          // Reset the form fields
+          signupForm.reset();
+        })
+        .catch(error => {
+          console.error(error);
+          // Example: Display an error message
+          alert('An error occurred during signup');
+        });
+    }
+  </script>
+</body>
+
+</html>
