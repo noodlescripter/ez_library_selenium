@@ -86,7 +86,10 @@ public class BaseClass {
 		}
 
 		if (driver != null) {
-			driver.get("http://localhost:8001/restore-database");
+			/*
+			* In case you need to restore your data
+			* */
+			//driver.get("http://localhost:8001/restore-database");
 			driver.quit();
 		}
 

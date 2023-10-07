@@ -1,4 +1,8 @@
-com/qa/e2e/mobile/MobileTest.class
+com/qa/api/base/API_Reporter.class
+com/qa/api/lib/api_ui.class
+com/qa/api/base/BaseTestAPI.class
+com/qa/api/lib/API.class
 com/qa/reporter/Reporter.class
-com/qa/e2e/admin/MainTest.class
+com/qa/Base/GetLibrary.class
+com/qa/e2e/demo/Demo_Test.class
 com/qa/Base/BaseClass.class

@@ -1,9 +1,0 @@
-#All appium commands\
-emulator -list-avds (this commands will show you all the available devices)
-emualator @devicename (this will start the devices)
-
-
-#start the appium server
-appium
-
-

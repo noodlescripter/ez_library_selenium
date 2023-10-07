@@ -1,8 +1,0 @@
-version: '3'
-services:
-  frontend:
-    image: banking-app:latest
-    container_name: banking-app-container
-    ports:
-      - '3000:3000'
-

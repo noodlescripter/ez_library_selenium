@@ -1,5 +1,6 @@
 com/qa/lib/ClearCache.class
 com/qa/lib/OSUTIL.class
+com/qa/lib/LIB.class
 com/qa/lib/AppLogin.class
 com/qa/lib/Wait.class
 com/qa/lib/AppNavigate.class
@@ -13,5 +14,7 @@ com/qa/config/BrowserConfig.class
 com/qa/lib/InvokeBatFile.class
 com/qa/lib/Window.class
 com/qa/lib/FileUtility.class
+com/qa/lib/Wrapper.class
 com/qa/db/DB.class
 com/qa/lib/ScreenShot.class
+com/qa/lib/CommandEx.class

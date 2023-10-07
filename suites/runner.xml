@@ -8,7 +8,7 @@
 		<classes>
 			<!-- <class name="com.qajaggar.base.admin.Main_2_Test"></class>
 			<class name="com.qajaggar.base.admin.MainTest"></class> -->
-			<class name="com.qa.e2e.admin.MainTest"></class>
+			<class name="com.qa.e2e.demo.Demo_Test"></class>
 		</classes>
 
 	</test>
